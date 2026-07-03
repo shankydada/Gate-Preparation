@@ -16,4 +16,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  preview: {
+    host: "0.0.0.0",                  // Bind to all interfaces
+    port: process.env.PORT || 4173,   // Use Render’s dynamic PORT
+    allowedHosts: [
+      "gate-preparation-zfkv.onrender.com", // Render’s assigned domain
+      "localhost"                           // Keep localhost for local dev
+    ],
+  },
 });
