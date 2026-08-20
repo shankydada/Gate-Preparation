@@ -40,14 +40,15 @@ export default function RoadmapView({ onNavigate }: RoadmapViewProps) {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1 className={`text-4xl sm:text-5xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-            Your 18-Month{' '}
+            Your Battle Plan to{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
-              Roadmap
+              6 Feb 2027
             </span>
           </h1>
           <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto`}>
-            A structured path from beginner to GATE-ready. Follow the phases, complete topics, 
-            and track your progress towards success.
+            Aligned to the official GATE 2027 timeline — registration from <strong>27 Aug 2026</strong>,
+            exams <strong>6–21 Feb 2027</strong>. Follow the phases, complete topics, and arrive at
+            exam day fully loaded.
           </p>
         </motion.div>
 
@@ -232,7 +233,7 @@ export default function RoadmapView({ onNavigate }: RoadmapViewProps) {
               { icon: '📝', tip: 'PYQs are KING — Solve 25+ years of previous questions' },
               { icon: '🎯', tip: "Don't skip General Aptitude — 15 free marks!" },
               { icon: '🔄', tip: 'Revise regularly — Forgetting curve is real' },
-              { icon: '📊', tip: 'Mock tests from Month 7 — Build exam temperament' },
+              { icon: '📊', tip: 'Full mocks from December — build exam temperament early' },
               { icon: '💪', tip: 'Stay positive — GATE is a marathon, not a sprint' },
             ].map((item, i) => (
               <motion.div

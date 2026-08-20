@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { 
-  ExternalLink, 
-  PlayCircle, 
-  BookOpen, 
-  Globe, 
+import {
+  ExternalLink,
+  PlayCircle,
+  BookOpen,
+  Globe,
   Star,
   ChevronRight,
   FileText,
@@ -12,26 +12,31 @@ import {
   Calculator,
   Lock,
   Unlock,
-  CheckCircle2
+  CheckCircle2,
+  Landmark,
+  FileDown,
+  CalendarDays
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
-import { 
-  youtubeChannels, 
-  essentialTools, 
-  books, 
-  pyqPapers, 
-  mockTests, 
-  formulaSheets 
+import {
+  youtubeChannels,
+  essentialTools,
+  books,
+  pyqPapers,
+  mockTests,
+  formulaSheets
 } from '../../data/gateData';
+import { GATE_INFO, IMPORTANT_DATES, OFFICIAL_LINKS } from '../../data/gate2027Official';
 
-type TabType = 'channels' | 'tools' | 'books' | 'pyqs' | 'mocks' | 'formulas';
+type TabType = 'official' | 'channels' | 'tools' | 'books' | 'pyqs' | 'mocks' | 'formulas';
 
 export default function ResourcesView() {
   const { darkMode, user, visitPYQ } = useStore();
-  const [activeTab, setActiveTab] = useState<TabType>('channels');
+  const [activeTab, setActiveTab] = useState<TabType>('official');
   const [expandedFormula, setExpandedFormula] = useState<string | null>(null);
 
   const tabs: { id: TabType; label: string; icon: any }[] = [
+    { id: 'official', label: 'Official 2027', icon: Landmark },
     { id: 'channels', label: 'YouTube', icon: PlayCircle },
     { id: 'tools', label: 'Tools', icon: Globe },
     { id: 'books', label: 'Books', icon: BookOpen },
@@ -83,6 +88,100 @@ export default function ResourcesView() {
         </div>
 
         <AnimatePresence mode="wait">
+          {/* Official GATE 2027 (IIT Madras) */}
+          {activeTab === 'official' && (
+            <motion.div
+              key="official"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <div className={`p-5 rounded-xl flex items-start gap-3 ${
+                darkMode ? 'bg-emerald-500/10 border border-emerald-500/25' : 'bg-emerald-50 border border-emerald-200'
+              }`}>
+                <Landmark className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
+                <p className={`text-sm ${darkMode ? 'text-emerald-200' : 'text-emerald-800'}`}>
+                  Everything here points to <strong>gate2027.iitm.ac.in</strong> (official IIT Madras portal).
+                  Conducting body: <strong>{GATE_INFO.organizingInstitute}</strong> • {GATE_INFO.totalTestPapers} test papers •
+                  score valid {GATE_INFO.scoreValidity} • new paper: <strong>{GATE_INFO.newPaper}</strong>.
+                  Helpdesk: {GATE_INFO.helpdesk.email} • {GATE_INFO.helpdesk.phone}
+                </p>
+              </div>
+
+              {/* Syllabus PDFs */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  { name: 'CS Syllabus PDF — GATE 2027 (Revised)', url: GATE_INFO.csSyllabusPdf, note: 'Digital Logic, COA & Networks revised. DL/COA refined, CN reduced.' },
+                  { name: 'General Aptitude Syllabus PDF — GATE 2027', url: GATE_INFO.gaSyllabusPdf, note: 'Common to all papers • 15 marks' },
+                ].map((doc, i) => (
+                  <motion.a
+                    key={doc.name}
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-5 rounded-xl flex items-start gap-4 ${
+                      darkMode ? 'bg-gray-800/80 hover:bg-gray-800 border border-gray-700' : 'bg-white hover:bg-gray-50 border border-gray-200 shadow-sm'
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{ scale: 1.02, y: -3 }}
+                  >
+                    <div className="p-3 rounded-xl bg-red-500/15 flex-shrink-0">
+                      <FileDown className="w-6 h-6 text-red-500" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className={`font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{doc.name}</h3>
+                      <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{doc.note}</p>
+                    </div>
+                    <ExternalLink className={`w-4 h-4 flex-shrink-0 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Key dates strip */}
+              <div className={`p-5 rounded-xl ${darkMode ? 'bg-gray-800/80 border border-gray-700' : 'bg-white border border-gray-200 shadow-sm'}`}>
+                <h3 className={`font-bold mb-4 flex items-center gap-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <CalendarDays className="w-5 h-5 text-blue-500" /> Official Timeline
+                </h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {IMPORTANT_DATES.filter(d => ['registration', 'exam', 'result'].includes(d.kind)).map((d) => (
+                    <div key={d.label} className={`p-3 rounded-xl ${darkMode ? 'bg-gray-700/40' : 'bg-gray-50'}`}>
+                      <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{d.label}</p>
+                      <p className={`text-sm font-bold mt-0.5 ${d.kind === 'exam' ? 'text-red-500' : darkMode ? 'text-white' : 'text-gray-900'}`}>{d.date}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* All official links */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {OFFICIAL_LINKS.map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-4 rounded-xl flex items-center justify-between gap-2 ${
+                      darkMode ? 'bg-gray-800/80 hover:bg-gray-800 border border-gray-700' : 'bg-white hover:bg-gray-50 border border-gray-200 shadow-sm'
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + index * 0.04 }}
+                    whileHover={{ scale: 1.02, y: -3 }}
+                  >
+                    <span className={`text-sm font-medium truncate ${darkMode ? 'text-white' : 'text-gray-900'}`}>{link.name}</span>
+                    <span className="flex items-center gap-2 flex-shrink-0">
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 font-bold">{link.tag}</span>
+                      <ExternalLink className={`w-4 h-4 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
           {/* YouTube Channels */}
           {activeTab === 'channels' && (
             <motion.div

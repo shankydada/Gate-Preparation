@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
-import { 
-  Trophy, 
-  Flame, 
-  Star, 
-  Moon, 
-  Sun, 
-  Menu, 
+import {
+  Trophy,
+  Flame,
+  Star,
+  Moon,
+  Sun,
+  Menu,
   X,
   BookOpen,
-  Target
+  Target,
+  Users
 } from 'lucide-react';
 import { useState } from 'react';
 import { useStore } from '../../store/useStore';
@@ -30,6 +31,7 @@ export default function Navbar({ onNavigate, currentView }: NavbarProps) {
     { id: 'subjects', label: 'Subjects', icon: BookOpen },
     { id: 'quiz', label: 'Quiz', icon: Star },
     { id: 'resources', label: 'Resources', icon: BookOpen },
+    { id: 'community', label: 'Community', icon: Users },
     { id: 'progress', label: 'Progress', icon: Trophy },
   ];
 

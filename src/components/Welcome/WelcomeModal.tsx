@@ -31,7 +31,7 @@ export default function WelcomeModal() {
     {
       icon: Target,
       title: "Follow the Roadmap",
-      description: "We've created an 18-month structured plan covering all 11 subjects. Follow the phases to stay on track.",
+      description: "A phase-wise plan aligned to the official GATE 2027 timeline (exams 6–21 Feb 2027) covering all 10 subject areas with the revised 2027 syllabus.",
       color: "from-green-500 to-emerald-600"
     },
     {
