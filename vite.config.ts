@@ -17,11 +17,12 @@ export default defineConfig({
     },
   },
   preview: {
-    host: "0.0.0.0",                  // Bind to all interfaces
-    port: process.env.PORT || 4173,   // Use Render’s dynamic PORT
+    host: "0.0.0.0",                            // Bind to all interfaces
+    port: Number(process.env.PORT) || 4173,     // Use Render’s dynamic PORT
     allowedHosts: [
       "gate-preparation-zfkv.onrender.com", // Render’s assigned domain
-      "localhost"                           // Keep localhost for local dev
+      "localhost",                          // Keep localhost for local dev
+      ".e2b.app"                            // Sandbox/dev preview hosts
     ],
   },
 });

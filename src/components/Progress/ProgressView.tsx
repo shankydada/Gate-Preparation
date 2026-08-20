@@ -15,6 +15,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { useStore } from '../../store/useStore';
 import { subjects, badges } from '../../data/gateData';
 import { getRank, getNextRank } from '../../data/ranks';
+import StudyHeatmap from './StudyHeatmap';
 
 export default function ProgressView() {
   const { darkMode, user, getProgress, getSubjectProgress, resetProgress } = useStore();
@@ -192,6 +193,9 @@ export default function ProgressView() {
             </p>
           </motion.div>
         </motion.div>
+
+        {/* Study Heatmap */}
+        <StudyHeatmap />
 
         {/* Subject Progress */}
         <motion.section

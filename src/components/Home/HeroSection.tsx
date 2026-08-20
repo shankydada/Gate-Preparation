@@ -1,18 +1,24 @@
 import { motion } from 'framer-motion';
-import { 
-  Rocket, 
-  BookOpen, 
-  Trophy, 
-  Users, 
-  Clock, 
+import {
+  Rocket,
+  BookOpen,
+  Trophy,
+  Users,
+  Clock,
   Star,
   ChevronRight,
-  Play
+  Play,
+  Megaphone
 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
 import DailyChallenge from './DailyChallenge';
 import DailyWidgets from './DailyWidgets';
+import DailyQuests from './DailyQuests';
+import CountdownTimer from './CountdownTimer';
+import OfficialInfo from './OfficialInfo';
+import FocusTimer from '../Common/FocusTimer';
 import AnimatedCounter from '../Common/AnimatedCounter';
+import { FIRST_EXAM_DATE_ISO, GATE_INFO } from '../../data/gate2027Official';
 
 interface HeroSectionProps {
   onNavigate: (view: string) => void;
@@ -22,10 +28,10 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
   const { darkMode, getProgress, user } = useStore();
 
   const stats = [
-    { label: 'Topics Covered', value: 200, suffix: '+', icon: BookOpen },
-    { label: 'Video Resources', value: 500, suffix: '+', icon: Play },
+    { label: 'Curated Resources', value: 500, suffix: '+', icon: Play },
     { label: 'Practice Questions', value: 10000, suffix: '+', icon: Star },
-    { label: 'Success Rate', value: 95, suffix: '%', icon: Trophy },
+    { label: 'Official 2027 Syllabus', value: 100, suffix: '%', icon: BookOpen },
+    { label: 'Your Potential Rank', value: 1, suffix: '', icon: Trophy },
   ];
 
   return (
@@ -140,9 +146,9 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Comprehensive 18-month preparation plan with 500+ video lectures, 
-              10,000+ practice questions, gamified learning, and expert-curated resources. 
-              Your journey to AIR 1 starts now!
+              A day-wise battle plan to the <strong>6–21 Feb 2027</strong> exam ({GATE_INFO.organizingShort}) with
+              500+ video lectures, 10,000+ practice questions, the <strong>official 2027-revised syllabus</strong>,
+              gamified daily habits and a buzzing aspirant community. Your journey to AIR 1 starts now!
             </motion.p>
 
             {/* CTA Buttons */}
@@ -193,7 +199,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               <div className="flex items-center gap-2">
                 <Clock className={`w-5 h-5 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
                 <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>
-                  <strong>18 months</strong> to GATE 2027
+                  <strong>{Math.max(0, Math.ceil((new Date(FIRST_EXAM_DATE_ISO).getTime() - Date.now()) / 86400000))} days</strong> to GATE 2027
                 </span>
               </div>
             </motion.div>
@@ -300,14 +306,73 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           </motion.div>
         </div>
 
-        {/* Daily Challenge */}
+        {/* Exam Countdown */}
         <motion.div
           className="mt-16"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.65 }}
+        >
+          <CountdownTimer />
+        </motion.div>
+
+        {/* Official syllabus-revision banner */}
+        <motion.a
+          href={GATE_INFO.papersPage}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`mt-6 flex items-center gap-4 p-5 rounded-2xl ${
+            darkMode
+              ? 'bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/15'
+              : 'bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/70'
+          }`}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.68 }}
+          whileHover={{ scale: 1.005 }}
+        >
+          <div className="p-2.5 rounded-xl bg-emerald-500/15 flex-shrink-0">
+            <Megaphone className="w-5 h-5 text-emerald-500" />
+          </div>
+          <div className="flex-1">
+            <p className={`font-bold text-sm ${darkMode ? 'text-emerald-300' : 'text-emerald-800'}`}>
+              Official: GATE 2027 syllabus has been REVISED by IIT Madras
+            </p>
+            <p className={`text-xs mt-0.5 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Digital Logic, COA & Networks changed — this app's syllabus & resources are already updated. Verify on gate2027.iitm.ac.in ↗
+            </p>
+          </div>
+          <ChevronRight className={`w-5 h-5 flex-shrink-0 ${darkMode ? 'text-emerald-400' : 'text-emerald-600'}`} />
+        </motion.a>
+
+        {/* Daily Challenge */}
+        <motion.div
+          className="mt-6"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
           <DailyChallenge />
+        </motion.div>
+
+        {/* Daily Quests */}
+        <motion.div
+          className="mt-6"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.72 }}
+        >
+          <DailyQuests onNavigate={onNavigate} />
+        </motion.div>
+
+        {/* Focus Timer */}
+        <motion.div
+          className="mt-6"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.74 }}
+        >
+          <FocusTimer />
         </motion.div>
 
         {/* Daily Widgets */}
@@ -342,7 +407,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               </div>
               <div>
                 <p className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                   {stat.label}
@@ -350,6 +415,16 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Official GATE 2027 info */}
+        <motion.div
+          className="mt-24"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <OfficialInfo />
         </motion.div>
       </div>
     </div>

@@ -35,14 +35,30 @@ Repo for the students want to Convert their struggle into opportunity for all. F
 
 ## 🎯 About
 
-**GATE 2027 Mastery** is a comprehensive, open-source web application designed to help Computer Science Engineering students prepare for GATE 2027. Built with modern web technologies, it offers a gamified learning experience with structured roadmaps, curated resources, interactive quizzes, and progress tracking.
+**GATE 2027 Mastery** is a comprehensive, open-source web application designed to help Computer Science Engineering students prepare for **GATE 2027 (organized by IIT Madras, exams 6–21 February 2027)**. Built with modern web technologies, it offers a gamified learning experience with a phase-wise roadmap to exam day, the **officially-revised GATE 2027 syllabus**, curated resources, interactive quizzes, a focus timer, daily quests and an aspirant community.
+
+> 📢 All exam facts, dates and the syllabus are synced with the official website: **[gate2027.iitm.ac.in](https://gate2027.iitm.ac.in/)**
+
+### Official GATE 2027 Quick Facts (IIT Madras)
+
+| Item | Detail |
+|------|--------|
+| 🗓️ **Registration (GOAPS)** | 27 Aug 2026 → 27 Sep 2026 (extended: 5 Oct 2026 w/ late fee) |
+| 🪪 **DigiLocker** | **Mandatory** for Indian nationals |
+| 📝 **Exam Dates** | 6–7, 13–14, 20–21 February 2027 |
+| 🏁 **Results** | 19 March 2027 |
+| 📄 **Papers** | 30 test papers (new: Robotics & Automation) |
+| 📊 **CS Pattern** | 65 Qs / 100 marks — GA 15 + Engg. Math 13 + Subject 72 |
+| ⚠️ **Syllabus Revised** | DL & COA refined; **Computer Networks reduced** (UDP, ARP, DHCP, ICMP, SMTP, FTP, Email removed; DNS+HTTP only; socket API in) |
 
 ### Why GATE 2027 Mastery?
 
-- 📚 **Comprehensive Coverage** - All 11 GATE CSE subjects with 200+ topics
-- 🎮 **Gamified Learning** - XP, levels, badges, daily challenges, and leaderboards
-- 📊 **Progress Tracking** - Visual dashboards and achievement systems
-- 🔗 **Curated Resources** - 400+ handpicked video lectures, practice links, and books
+- ✅ **Officially Correct** - Syllabus, dates & pattern verified against gate2027.iitm.ac.in — with a built-in 2026→2027 changelog
+- 📚 **Comprehensive Coverage** - All 10 GATE CSE subject areas with the revised 2027 syllabus
+- 🎮 **Gamified Learning** - XP, levels, 24 badges, streaks, daily challenges and daily quests
+- ⏱️ **Focus Timer** - Pomodoro sessions that bank XP, feed streaks and light up your study heatmap
+- 💬 **Aspirant Community** - On-device discussion board (private, offline) + links to GATE Overflow, Reddit & more
+- 🔗 **Curated Resources** - 500+ handpicked video lectures, practice links, PYQs and books
 - 🆓 **100% Free** - Open source and free to use forever
 
 ---
@@ -52,34 +68,43 @@ Repo for the students want to Convert their struggle into opportunity for all. F
 ### 📚 Learning System
 | Feature | Description |
 |---------|-------------|
-| 📖 **11 Subjects** | Complete GATE CSE syllabus coverage |
-| 🗺️ **18-Month Roadmap** | Structured 5-phase preparation plan |
-| 📝 **200+ Topics** | Detailed breakdown with subtopics |
-| 🔗 **400+ Resources** | Curated videos, articles, and tools |
+| 📖 **10 Subject Areas** | Complete, revised GATE 2027 CSE syllabus coverage |
+| 🗺️ **Exam-Day Roadmap** | 5 phases aligned to the official 2027 timeline |
+| 📝 **80+ Topics** | Detailed breakdown with subtopics (incl. new 2027 topics) |
+| 🔗 **500+ Resources** | Curated videos, articles, simulators and tools |
 | ✅ **Topic Tracking** | Mark topics as complete |
-| 🔖 **Bookmarks** | Save important topics |
+| 🔖 **Bookmarks** | Save important topics for revision |
 
-### 🎮 Gamification
+### 🎮 Gamification & Daily Habit
 | Feature | Description |
 |---------|-------------|
-| ⭐ **XP System** | Earn experience points for activities |
+| ⭐ **XP System** | Earn experience points for every activity |
 | 📈 **Level Up** | Progress through levels (500 XP each) |
-| 🏅 **10 Badges** | Unlock achievements |
+| 🏅 **24 Badges** | Unlock achievements (streaks, focus, community & more) |
 | 🔥 **Daily Streaks** | Track consecutive study days |
-| 💰 **Coin Currency** | Earn and spend coins |
-| ⚡ **Power-Ups** | Hints, Skips, and 2x XP |
-| 🎯 **Daily Challenges** | Daily missions with bonus rewards |
-| 🏆 **Leaderboard** | Compete with other aspirants |
-| 🔢 **Combo System** | Consecutive correct answers multiply rewards |
+| ⚔️ **Daily Challenge** | 5 fresh questions every day with bonus XP |
+| 🗺️ **Daily Quests** | 3 rotating quests per day — finish all to bank rewards |
+| ⏱️ **Focus Timer** | 25/50-min Pomodoros that log study time automatically |
+| 📅 **Study Heatmap** | GitHub-style activity calendar in Progress |
+| ⏳ **Live Countdown** | Ticking countdown to 6 Feb 2027 on the home page |
 
 ### 📝 Practice System
 | Feature | Description |
 |---------|-------------|
-| ❓ **90+ Questions** | Topic-wise quiz questions |
+| ❓ **85+ Questions** | Topic-wise quiz questions (incl. new 2027 syllabus topics) |
 | ⏱️ **Timed Quizzes** | Build exam temperament |
 | 📊 **Score Tracking** | Performance history |
 | 💡 **Explanations** | Detailed answer explanations |
 | 🎯 **Difficulty Levels** | Easy, Medium, Hard questions |
+
+### 💬 Community
+| Feature | Description |
+|---------|-------------|
+| 🗨️ **Discussion Board** | Ask doubts, share strategies, post wins |
+| 👍 **Upvotes & Replies** | Reddit-style threads with voting |
+| 🏷️ **Categories & Search** | Doubts, Strategy, Official Updates, Resources, Motivation |
+| 🕵️ **Anonymous by Default** | Auto-generated handles keep you private |
+| 🌐 **Bigger Communities** | One-tap links to GATE Overflow, Reddit, GO Classes |
 
 ### 🎨 UI/UX
 | Feature | Description |

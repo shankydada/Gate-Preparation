@@ -62,51 +62,52 @@ export interface Badge {
   xpReward: number;
 }
 
-// Phases Data
+// Phases Data — aligned to the official GATE 2027 timeline (IIT Madras)
+// Registration: 27 Aug 2026 • Exams: 6-21 Feb 2027 • Results: 19 Mar 2027
 export const phases: Phase[] = [
   {
     id: 1,
-    name: "Foundation Building",
-    duration: "6 months",
-    months: "Month 1-6",
-    description: "Build strong fundamentals in all core subjects",
-    subjects: ["Discrete Mathematics", "C Programming", "Data Structures", "Digital Logic", "Algorithms", "Linear Algebra", "Theory of Computation", "Calculus"],
+    name: "Foundation Sprint",
+    duration: "Weeks 1-6",
+    months: "Aug - Sep 2026",
+    description: "Build strong fundamentals in high-weightage cores while you complete your GATE 2027 registration (GOAPS opens 27 Aug 2026, regular registration closes 27 Sep 2026)",
+    subjects: ["Discrete Mathematics", "C Programming", "Data Structures", "Digital Logic", "Engineering Mathematics"],
     color: "from-blue-500 to-cyan-500"
   },
   {
     id: 2,
-    name: "Deep Dive",
-    duration: "6 months",
-    months: "Month 7-12",
-    description: "Master advanced concepts and problem-solving",
-    subjects: ["Theory of Computation", "Probability", "Compiler Design", "Operating Systems", "DBMS", "Computer Organization"],
+    name: "Core Subjects Mastery",
+    duration: "Weeks 7-14",
+    months: "Oct - Nov 2026",
+    description: "Master the biggest marks scorers and start solving PYQs alongside each topic",
+    subjects: ["Algorithms", "Operating Systems", "DBMS", "Theory of Computation", "Probability"],
     color: "from-purple-500 to-pink-500"
   },
   {
     id: 3,
-    name: "Revision + PYQs",
-    duration: "4 months",
-    months: "Month 13-16",
-    description: "Revise all subjects and solve previous year questions",
-    subjects: ["Computer Networks", "All Subjects Revision", "25+ Years PYQs"],
+    name: "Finish the Syllabus",
+    duration: "Weeks 15-22",
+    months: "Nov - Dec 2026",
+    description: "Complete the remaining subjects including the 2027-revised sections (DL, COA, CN) and daily General Aptitude practice",
+    subjects: ["Computer Organization (revised)", "Computer Networks (revised)", "Compiler Design", "General Aptitude", "Linear Algebra & Calculus"],
     color: "from-orange-500 to-red-500"
   },
   {
     id: 4,
-    name: "Mock Tests",
-    duration: "2 months",
-    months: "Month 17-18",
-    description: "Full-length mock tests and weak area targeting",
-    subjects: ["Full Mock Tests", "Error Analysis", "Time Management"],
+    name: "PYQ Marathon + Mocks",
+    duration: "4 weeks",
+    months: "January 2027",
+    description: "Solve 25+ years of previous papers timed, weekly full-length mock tests, and revise weak areas. Admit cards expected around 4 Jan 2027.",
+    subjects: ["25+ Years PYQs", "Full Mock Tests", "Error Analysis", "Time Management"],
     color: "from-green-500 to-emerald-500"
   },
   {
     id: 5,
     name: "Final Sprint",
     duration: "2 weeks",
-    months: "Last 2 weeks",
-    description: "Light revision, formula sheets, confidence building",
-    subjects: ["Formula Sheets", "Short Notes", "Mental Preparation"],
+    months: "Till 6 Feb 2027",
+    description: "Light revision, formula sheets, one mock every 2 days, confidence building before exam day (6-21 Feb 2027)",
+    subjects: ["Formula Sheets", "Short Notes", "Mock Analysis", "Mental Preparation"],
     color: "from-yellow-500 to-orange-500"
   }
 ];
@@ -131,7 +132,12 @@ export const badges: Badge[] = [
   { id: "level_10", name: "GATE Warrior", description: "Reach Level 10", icon: "💫", requirement: "level_10", xpReward: 500 },
   { id: "topics_25", name: "Quarter Century", description: "Complete 25 topics", icon: "🎯", requirement: "25_topics", xpReward: 300 },
   { id: "streak_14", name: "Fortnight Fighter", description: "14-day study streak", icon: "🔥", requirement: "14_day_streak", xpReward: 350 },
-  { id: "perfect_5", name: "Perfectionist", description: "Get 5 perfect quiz scores", icon: "💎", requirement: "5_perfect", xpReward: 400 }
+  { id: "perfect_5", name: "Perfectionist", description: "Get 5 perfect quiz scores", icon: "💎", requirement: "5_perfect", xpReward: 400 },
+  { id: "community_voice", name: "Community Voice", description: "Create your first community post", icon: "📣", requirement: "first_post", xpReward: 100 },
+  { id: "helpful_hand", name: "Helpful Hand", description: "Reply to 5 community threads", icon: "🤝", requirement: "5_replies", xpReward: 150 },
+  { id: "focus_master", name: "Deep Focus", description: "Complete 5 focus sessions", icon: "🧘", requirement: "5_focus_sessions", xpReward: 200 },
+  { id: "quest_hunter", name: "Quest Hunter", description: "Complete 10 daily quests", icon: "🗺️", requirement: "10_quests", xpReward: 250 },
+  { id: "study_marathon", name: "Study Marathon", description: "Log 20 hours of focus time", icon: "⏱️", requirement: "1200_minutes", xpReward: 300 }
 ];
 
 // Complete Subjects Data
@@ -467,66 +473,58 @@ export const subjects: Subject[] = [
     icon: "🔌",
     color: "bg-gradient-to-br from-yellow-500 to-orange-600",
     weightage: "3-5%",
-    description: "Number systems, Boolean algebra, combinational & sequential circuits",
+    description: "Boolean algebra & minimization (algebraic, K-Map, tabular), design of combinational & sequential circuits, number representation & arithmetic — revised for GATE 2027",
     sections: [
-      {
-        id: "number-systems",
-        name: "Number Systems & Codes",
-        topics: [
-          {
-            id: "number-conversions",
-            name: "Number Systems & Conversions",
-            subtopics: [
-              "Binary, Octal, Hex conversions",
-              "1's, 2's Complement",
-              "BCD, Gray Code, Binary Arithmetic"
-            ],
-            resources: [
-              { type: "video", name: "Gate Smashers - Number Systems", url: "https://www.youtube.com/watch?v=LpuPe81bc2w", icon: "📺" },
-              { type: "video", name: "Neso Academy - Number Systems", url: "https://www.youtube.com/watch?v=cJNm938Xwao", icon: "📺" },
-              { type: "practice", name: "GATE Overflow - Digital Logic", url: "https://gateoverflow.in/tag/digital-logic", icon: "📝" },
-              { type: "tool", name: "Number System Converter", url: "https://www.rapidtables.com/convert/number/", icon: "🔧" }
-            ],
-            importance: 2,
-            estimatedHours: 6
-          }
-        ]
-      },
       {
         id: "boolean-algebra",
         name: "Boolean Algebra & Minimization",
         topics: [
           {
             id: "boolean-laws",
-            name: "Boolean Algebra & K-Maps",
+            name: "Boolean Algebra & Laws",
             subtopics: [
-              "Boolean Laws, De Morgan's",
-              "SOP, POS, Minterms, Maxterms",
-              "Karnaugh Maps (2-5 variables)",
-              "Quine-McCluskey Method"
+              "Boolean Laws, De Morgan's Theorems, Duality",
+              "SOP & POS forms, Minterms, Maxterms"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Boolean Algebra", url: "https://www.youtube.com/watch?v=6zB3I-YYYSk", icon: "📺" },
-              { type: "video", name: "Neso Academy - K-Map", url: "https://www.youtube.com/watch?v=RO5alU6PpSU", icon: "📺" },
-              { type: "practice", name: "GATE Overflow - Boolean Algebra", url: "https://gateoverflow.in/tag/boolean-algebra", icon: "📝" },
-              { type: "tool", name: "K-Map Solver", url: "https://www.charlie-coleman.com/experiments/kmap/", icon: "🔧" }
+              { type: "video", name: "Neso Academy - Boolean Algebra", url: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRjMH3mWf6kwqiTbT798eAOm", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Boolean Algebra", url: "https://gateoverflow.in/tag/boolean-algebra", icon: "📝" }
             ],
             importance: 2,
+            estimatedHours: 6
+          },
+          {
+            id: "minimization-techniques",
+            name: "Minimization: Algebraic, K-Map, Tabular (Quine-McCluskey)",
+            subtopics: [
+              "Algebraic technique (explicit in GATE 2027 syllabus)",
+              "Karnaugh Map / K-Map: 2-5 variables, don't cares ⭐",
+              "Tabular method: Quine-McCluskey (explicit in GATE 2027 syllabus)"
+            ],
+            resources: [
+              { type: "video", name: "Neso Academy - K-Map", url: "https://www.youtube.com/watch?v=RO5alU6PpSU", icon: "📺" },
+              { type: "video", name: "Gate Smashers - Quine McCluskey", url: "https://www.youtube.com/results?search_query=gate+smashers+quine+mccluskey", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Minimization PYQs", url: "https://gateoverflow.in/tag/boolean-algebra", icon: "📝" },
+              { type: "tool", name: "K-Map Solver", url: "https://www.charlie-coleman.com/experiments/kmap/", icon: "🔧" }
+            ],
+            importance: 3,
             estimatedHours: 10
           }
         ]
       },
       {
         id: "combinational",
-        name: "Combinational Circuits",
+        name: "Design of Combinational Circuits",
         topics: [
           {
             id: "comb-circuits",
             name: "Combinational Circuit Design",
             subtopics: [
-              "Logic Gates, Universal Gates",
-              "Adders, Subtractors, MUX, DEMUX",
-              "Encoders, Decoders, Comparators, Parity"
+              "Logic Gates, Universal Gates (NAND, NOR)",
+              "Adders, Subtractors",
+              "Multiplexers, Demultiplexers, Encoders, Decoders",
+              "Comparators, Parity Generators/Checkers"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Combinational Circuits", url: "https://www.youtube.com/watch?v=VPw9vPN-3ac", icon: "📺" },
@@ -541,16 +539,16 @@ export const subjects: Subject[] = [
       },
       {
         id: "sequential",
-        name: "Sequential Circuits & FSM",
+        name: "Design of Sequential Circuits",
         topics: [
           {
             id: "seq-circuits",
-            name: "Sequential Circuits",
+            name: "Sequential Circuit Design",
             subtopics: [
-              "Latches, Flip-Flops (SR, D, JK, T)",
-              "Shift Registers, Counters",
-              "Mealy vs Moore Machine",
-              "State Minimization, Sequence Detectors"
+              "Latches & Flip-Flops (SR, D, JK, T), Excitation Tables ⭐",
+              "Registers & Shift Registers",
+              "Synchronous & Asynchronous (Ripple) Counters ⭐",
+              "Finite State Machines: Mealy vs Moore, Sequence Detectors"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Sequential Circuits", url: "https://www.youtube.com/watch?v=GhfOHcgqmUc", icon: "📺" },
@@ -558,8 +556,34 @@ export const subjects: Subject[] = [
               { type: "video", name: "Gate Smashers - FSM", url: "https://www.youtube.com/watch?v=ehy5FcI_wNc", icon: "📺" },
               { type: "practice", name: "GATE Overflow - Sequential", url: "https://gateoverflow.in/tag/sequential-circuit", icon: "📝" }
             ],
-            importance: 2,
+            importance: 3,
             estimatedHours: 15
+          }
+        ]
+      },
+      {
+        id: "number-representation",
+        name: "Number Representation & Arithmetic",
+        topics: [
+          {
+            id: "number-conversions",
+            name: "Number Systems: Fixed & Floating Point",
+            subtopics: [
+              "Binary, Octal, Hexadecimal conversions; r's & (r-1)'s complement",
+              "Signed, 1's complement, 2's complement representation ⭐",
+              "Fixed point arithmetic",
+              "Floating point representation (IEEE 754) ⭐",
+              "Gray code & BCD"
+            ],
+            resources: [
+              { type: "video", name: "Gate Smashers - Number Systems", url: "https://www.youtube.com/watch?v=LpuPe81bc2w", icon: "📺" },
+              { type: "video", name: "Neso Academy - Number Systems", url: "https://www.youtube.com/watch?v=cJNm938Xwao", icon: "📺" },
+              { type: "video", name: "Gate Smashers - IEEE 754", url: "https://www.youtube.com/watch?v=8afbTaA-gOQ", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Digital Logic", url: "https://gateoverflow.in/tag/digital-logic", icon: "📝" },
+              { type: "tool", name: "Number System Converter", url: "https://www.rapidtables.com/convert/number/", icon: "🔧" }
+            ],
+            importance: 2,
+            estimatedHours: 8
           }
         ]
       }
@@ -572,18 +596,18 @@ export const subjects: Subject[] = [
     icon: "🖥️",
     color: "bg-gradient-to-br from-purple-500 to-violet-600",
     weightage: "5-8%",
-    description: "CPU design, pipelining, memory hierarchy, cache, I/O systems",
+    description: "Instruction set, ALU & control unit design (hardwired + microprogrammed), pipelining, memory hierarchy & cache mapping, I/O — revised for GATE 2027",
     sections: [
       {
-        id: "basic-org",
-        name: "Basic Organization",
+        id: "instruction-set",
+        name: "Instruction Set & Addressing Modes",
         topics: [
           {
             id: "addressing-modes",
-            name: "Addressing Modes & Instruction Formats",
+            name: "Instruction Set & Addressing Modes",
             subtopics: [
-              "Von Neumann, Harvard Architecture",
-              "Instruction Formats, Addressing Modes",
+              "Instruction formats & instruction set (GATE 2027 wording)",
+              "Addressing modes (immediate, direct, indirect, register, indexed, PC-relative) ⭐",
               "RISC vs CISC"
             ],
             resources: [
@@ -599,19 +623,21 @@ export const subjects: Subject[] = [
       },
       {
         id: "alu",
-        name: "ALU Design & Arithmetic",
+        name: "Design of ALU & Arithmetic",
         topics: [
           {
             id: "alu-design",
-            name: "ALU & Arithmetic Operations",
+            name: "ALU Design & Arithmetic Operations",
             subtopics: [
-              "Fixed Point: Booth's Algorithm",
-              "Floating Point: IEEE 754",
-              "Restoring and Non-restoring Division"
+              "Design of arithmetic and logic unit (ALU) — explicit in GATE 2027",
+              "Fixed point: Booth's multiplication algorithm ⭐",
+              "Restoring and non-restoring division",
+              "Floating point: IEEE 754 representation & arithmetic"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Booth's Algorithm", url: "https://www.youtube.com/watch?v=DIp4GqSdVaY", icon: "📺" },
               { type: "video", name: "Gate Smashers - IEEE 754", url: "https://www.youtube.com/watch?v=8afbTaA-gOQ", icon: "📺" },
+              { type: "video", name: "Neso Academy - COA Playlist", url: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q", icon: "📺" },
               { type: "practice", name: "GATE Overflow - COA Arithmetic", url: "https://gateoverflow.in/tag/booth-algorithm", icon: "📝" },
               { type: "tool", name: "IEEE 754 Converter", url: "https://www.h-schmidt.net/FloatConverter/IEEE754.html", icon: "🔧" }
             ],
@@ -621,17 +647,57 @@ export const subjects: Subject[] = [
         ]
       },
       {
+        id: "control-unit",
+        name: "Design of Control Unit (NEW in 2027)",
+        topics: [
+          {
+            id: "hardwired-control",
+            name: "Hardwired Control Unit Design",
+            subtopics: [
+              "Explicitly added in GATE 2027 syllabus ⭐⭐",
+              "Control signals & timing diagrams",
+              "Hardwired vs microprogrammed control"
+            ],
+            resources: [
+              { type: "video", name: "Gate Smashers - Control Unit", url: "https://www.youtube.com/results?search_query=gate+smashers+hardwired+control+unit", icon: "📺" },
+              { type: "video", name: "Neso Academy - Control Unit", url: "https://www.youtube.com/results?search_query=neso+academy+control+unit+design", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Control Unit", url: "https://gateoverflow.in/tag/control-unit", icon: "📝" },
+              { type: "book", name: "Carl Hamacher - Ch 7 Control Unit", url: "https://www.amazon.in/Computer-Organization-Carl-Hamacher/dp/0071246517", icon: "📚" }
+            ],
+            importance: 3,
+            estimatedHours: 10
+          },
+          {
+            id: "microprogrammed-control",
+            name: "Microprogrammed Control Unit Design",
+            subtopics: [
+              "Explicitly added in GATE 2027 syllabus ⭐⭐",
+              "Microinstructions & control memory",
+              "Horizontal vs vertical microprogramming",
+              "Microprogram sequencing"
+            ],
+            resources: [
+              { type: "video", name: "Gate Smashers - Microprogrammed Control", url: "https://www.youtube.com/results?search_query=gate+smashers+microprogrammed+control+unit", icon: "📺" },
+              { type: "video", name: "Neso Academy - Microprogramming", url: "https://www.youtube.com/results?search_query=neso+academy+microprogramming+control", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Microprogramming PYQs", url: "https://gateoverflow.in/tag/microprogramming", icon: "📝" }
+            ],
+            importance: 3,
+            estimatedHours: 10
+          }
+        ]
+      },
+      {
         id: "pipelining",
-        name: "Pipelining",
+        name: "Instruction Pipelining & Hazards",
         topics: [
           {
             id: "pipeline-basics",
             name: "Pipelining Concepts & Hazards",
             subtopics: [
-              "Pipeline Stages, Throughput, Speedup, Efficiency",
-              "Structural, Data, Control Hazards",
-              "Forwarding, Stalling, Branch Prediction",
-              "Performance Calculations"
+              "Pipeline stages, throughput, speedup, efficiency",
+              "Structural, data & control hazards ⭐⭐",
+              "Forwarding, stalling, branch prediction",
+              "Pipeline performance numericals ⭐⭐⭐"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Pipelining", url: "https://www.youtube.com/watch?v=eVRdfl4zxfI", icon: "📺" },
@@ -645,16 +711,17 @@ export const subjects: Subject[] = [
         ]
       },
       {
-        id: "memory",
-        name: "Memory Organization",
+        id: "memory-hierarchy",
+        name: "Memory Interfacing & Hierarchy (Revised 2027)",
         topics: [
           {
             id: "cache-memory",
-            name: "Cache Memory",
+            name: "Cache Memory Mapping Techniques",
             subtopics: [
-              "Mapping: Direct, Associative, Set-Associative",
-              "Replacement: LRU, FIFO, Random",
-              "Write Policies, AMAT Calculation"
+              "Cache mapping: direct, associative, set-associative ⭐⭐⭐ (explicit in GATE 2027)",
+              "Tag/line/word address breakdown",
+              "Replacement policies: LRU, FIFO",
+              "Write policies: write-through vs write-back"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Cache Memory", url: "https://www.youtube.com/watch?v=V0wJnYbXWyU", icon: "📺" },
@@ -665,16 +732,17 @@ export const subjects: Subject[] = [
             estimatedHours: 15
           },
           {
-            id: "virtual-memory",
-            name: "Virtual Memory & TLB",
+            id: "memory-interfacing",
+            name: "Memory Interfacing & Hierarchy Performance",
             subtopics: [
-              "Page Table, TLB",
-              "Memory Interleaving",
-              "Effective Access Time"
+              "Memory interfacing — explicit in GATE 2027 syllabus",
+              "Hierarchy performance: hit rate, AMAT ⭐⭐",
+              "Effective (average) memory access time with TLB",
+              "Memory interleaving"
             ],
             resources: [
-              { type: "video", name: "Gate Smashers - Virtual Memory", url: "https://www.youtube.com/watch?v=0r-dLlKS0Yw", icon: "📺" },
-              { type: "video", name: "Gate Smashers - TLB", url: "https://www.youtube.com/watch?v=l7HoguhFVQ4", icon: "📺" },
+              { type: "video", name: "Gate Smashers - Memory Hierarchy", url: "https://www.youtube.com/watch?v=0r-dLlKS0Yw", icon: "📺" },
+              { type: "video", name: "Gate Smashers - AMAT/EMAT", url: "https://www.youtube.com/watch?v=l7HoguhFVQ4", icon: "📺" },
               { type: "practice", name: "GATE Overflow - Memory", url: "https://gateoverflow.in/tag/virtual-memory", icon: "📝" }
             ],
             importance: 3,
@@ -684,14 +752,15 @@ export const subjects: Subject[] = [
       },
       {
         id: "io",
-        name: "I/O Organization",
+        name: "I/O Interface (Interrupt & DMA)",
         topics: [
           {
             id: "io-techniques",
-            name: "I/O Techniques",
+            name: "I/O Techniques: Interrupts & DMA",
             subtopics: [
-              "Programmed I/O, Interrupt-Driven I/O, DMA",
-              "Interrupts, Buses, Daisy Chaining"
+              "Programmed I/O, interrupt-driven I/O ⭐",
+              "DMA (Direct Memory Access) mode ⭐",
+              "Interrupt types & handling, daisy chaining"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - I/O Organization", url: "https://www.youtube.com/watch?v=Fw2H8z8OOX0", icon: "📺" },
@@ -1669,19 +1738,20 @@ export const subjects: Subject[] = [
     icon: "🌐",
     color: "bg-gradient-to-br from-sky-500 to-blue-600",
     weightage: "5-8%",
-    description: "OSI/TCP-IP, data link, network, transport, application layers",
+    description: "Layering, switching, error detection, MAC, Ethernet, DV/LS routing, IPv4/CIDR/NAT, TCP + socket API, DNS & HTTP. Reduced in GATE 2027 — UDP, ARP, DHCP, ICMP, SMTP, FTP & Email removed.",
     sections: [
       {
-        id: "osi-tcp",
-        name: "Network Models",
+        id: "layering-switching",
+        name: "Principles of Layering & Switching",
         topics: [
           {
             id: "network-basics",
-            name: "OSI/TCP-IP Models & Physical Layer",
+            name: "Layering Principles & Switching",
             subtopics: [
-              "7 Layers of OSI",
-              "TCP/IP Model",
-              "Physical Layer Basics"
+              "Principles of layering (GATE 2027 wording)",
+              "Switching: circuit, packet & virtual circuit ⭐",
+              "Performance metrics: bandwidth, delay/RTT, throughput ⭐⭐",
+              "Nyquist & Shannon capacity formulas"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - Networks Playlist ⭐⭐⭐", url: "https://www.youtube.com/playlist?list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_", icon: "📺" },
@@ -1689,74 +1759,106 @@ export const subjects: Subject[] = [
               { type: "practice", name: "GATE Overflow - Networks", url: "https://gateoverflow.in/tag/computer-networks", icon: "📝" },
               { type: "book", name: "Kurose & Ross", url: "https://www.amazon.in/Computer-Networking-Top-Down-Approach-7th/dp/0133594149", icon: "📚" }
             ],
-            importance: 1,
-            estimatedHours: 6
+            importance: 2,
+            estimatedHours: 8
           }
         ]
       },
       {
         id: "data-link",
-        name: "Data Link Layer",
+        name: "Data Link Layer: Error Detection, MAC & Ethernet",
         topics: [
           {
             id: "error-detection",
             name: "Error Detection: CRC & Hamming",
             subtopics: [
-              "CRC ⭐⭐",
-              "Hamming Code ⭐⭐"
+              "Parity check",
+              "CRC (Cyclic Redundancy Check) ⭐⭐",
+              "Hamming code ⭐⭐"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - CRC", url: "https://www.youtube.com/watch?v=A9g6rTMblz4", icon: "📺" },
               { type: "video", name: "Gate Smashers - Hamming Code", url: "https://www.youtube.com/watch?v=373FUw-2U2k", icon: "📺" },
               { type: "practice", name: "GATE Overflow - Error Detection", url: "https://gateoverflow.in/tag/error-detection", icon: "📝" }
             ],
-            importance: 2,
+            importance: 3,
             estimatedHours: 10
           },
           {
-            id: "flow-control",
-            name: "Flow Control Protocols",
-            subtopics: [
-              "Stop & Wait ⭐⭐",
-              "Go-Back-N vs Selective Repeat ⭐⭐⭐"
-            ],
-            resources: [
-              { type: "video", name: "Gate Smashers - Stop & Wait", url: "https://www.youtube.com/watch?v=LgPJhmDjRYQ", icon: "📺" },
-              { type: "video", name: "Gate Smashers - Sliding Window", url: "https://www.youtube.com/watch?v=klGkODhjkPA", icon: "📺" },
-              { type: "video", name: "GBN vs SR", url: "https://www.youtube.com/watch?v=QD3oCelHJ20", icon: "📺" },
-              { type: "practice", name: "GATE Overflow - Flow Control", url: "https://gateoverflow.in/tag/sliding-window", icon: "📝" }
-            ],
-            importance: 3,
-            estimatedHours: 15
-          },
-          {
             id: "mac",
-            name: "MAC Protocols: ALOHA, CSMA/CD",
+            name: "Medium Access Control (MAC)",
             subtopics: [
-              "Pure ALOHA, Slotted ALOHA ⭐",
-              "CSMA/CD ⭐⭐"
+              "Pure ALOHA & Slotted ALOHA (throughput) ⭐⭐",
+              "CSMA/CD (min frame size, collision window) ⭐⭐⭐"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - ALOHA", url: "https://www.youtube.com/watch?v=6cOb9bLfxgQ", icon: "📺" },
               { type: "video", name: "Gate Smashers - CSMA/CD", url: "https://www.youtube.com/watch?v=iKn0GzF5-IU", icon: "📺" },
               { type: "practice", name: "GATE Overflow - MAC", url: "https://gateoverflow.in/tag/mac", icon: "📝" }
             ],
-            importance: 2,
+            importance: 3,
             estimatedHours: 10
+          },
+          {
+            id: "ethernet",
+            name: "Ethernet",
+            subtopics: [
+              "Ethernet frame format ⭐",
+              "Manchester encoding",
+              "Max/efficiency numericals"
+            ],
+            resources: [
+              { type: "video", name: "Gate Smashers - Ethernet", url: "https://www.youtube.com/results?search_query=gate+smashers+ethernet+frame", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Ethernet", url: "https://gateoverflow.in/tag/ethernet", icon: "📝" }
+            ],
+            importance: 2,
+            estimatedHours: 6
+          },
+          {
+            id: "flow-control",
+            name: "Reliable Delivery: Stop & Wait, GBN, SR (background)",
+            subtopics: [
+              "⚠️ Not explicit in GATE 2027 syllabus — still excellent background for TCP",
+              "Stop & Wait efficiency",
+              "Go-Back-N vs Selective Repeat"
+            ],
+            resources: [
+              { type: "video", name: "Gate Smashers - Stop & Wait", url: "https://www.youtube.com/watch?v=LgPJhmDjRYQ", icon: "📺" },
+              { type: "video", name: "GBN vs SR", url: "https://www.youtube.com/watch?v=QD3oCelHJ20", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Sliding Window", url: "https://gateoverflow.in/tag/sliding-window", icon: "📝" }
+            ],
+            importance: 1,
+            estimatedHours: 8
           }
         ]
       },
       {
-        id: "network-layer",
-        name: "Network Layer",
+        id: "routing-ipv4",
+        name: "Routing & IPv4 (Fragmentation, CIDR, NAT)",
         topics: [
           {
-            id: "ip-addressing",
-            name: "IPv4 Addressing & Subnetting",
+            id: "routing",
+            name: "Distance Vector & Link State Routing",
             subtopics: [
-              "Classful Addressing",
-              "Subnetting ⭐⭐⭐",
-              "CIDR & VLSM"
+              "Distance vector routing (Bellman-Ford) ⭐⭐",
+              "Link state routing (Dijkstra) ⭐⭐",
+              "⚠️ Standalone shortest-path & flooding removed in 2027"
+            ],
+            resources: [
+              { type: "video", name: "Gate Smashers - Distance Vector", url: "https://www.youtube.com/watch?v=00AAnwgl2DI", icon: "📺" },
+              { type: "video", name: "Gate Smashers - Link State", url: "https://www.youtube.com/watch?v=nh_bpXAY1pc", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Routing", url: "https://gateoverflow.in/tag/routing", icon: "📝" }
+            ],
+            importance: 3,
+            estimatedHours: 10
+          },
+          {
+            id: "ip-addressing",
+            name: "IPv4: CIDR Notation & Subnetting",
+            subtopics: [
+              "CIDR notation ⭐⭐⭐",
+              "Subnetting & supernetting (aggregation) ⭐⭐⭐",
+              "IP header fields"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - IP Addressing", url: "https://www.youtube.com/watch?v=bBLHJSz7R-A", icon: "📺" },
@@ -1769,57 +1871,47 @@ export const subjects: Subject[] = [
           },
           {
             id: "fragmentation",
-            name: "IP Fragmentation",
+            name: "IPv4 Fragmentation & NAT",
             subtopics: [
-              "MTU, Fragment Offset ⭐⭐"
+              "MTU, fragment offset, reassembly ⭐⭐⭐",
+              "Network Address Translation (NAT) ⭐",
+              "⚠️ ARP, DHCP, ICMP removed in GATE 2027"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - IP Fragmentation", url: "https://www.youtube.com/watch?v=y8JqZ2u7KY8", icon: "📺" },
+              { type: "video", name: "Gate Smashers - NAT", url: "https://www.youtube.com/results?search_query=gate+smashers+NAT+network+address+translation", icon: "📺" },
               { type: "practice", name: "GATE Overflow - Fragmentation", url: "https://gateoverflow.in/tag/fragmentation", icon: "📝" }
             ],
-            importance: 2,
-            estimatedHours: 8
-          },
-          {
-            id: "routing",
-            name: "Routing Protocols",
-            subtopics: [
-              "Distance Vector Routing",
-              "Link State Routing"
-            ],
-            resources: [
-              { type: "video", name: "Gate Smashers - Distance Vector", url: "https://www.youtube.com/watch?v=00AAnwgl2DI", icon: "📺" },
-              { type: "video", name: "Gate Smashers - Link State", url: "https://www.youtube.com/watch?v=nh_bpXAY1pc", icon: "📺" },
-              { type: "practice", name: "GATE Overflow - Routing", url: "https://gateoverflow.in/tag/routing", icon: "📝" }
-            ],
-            importance: 2,
+            importance: 3,
             estimatedHours: 10
           }
         ]
       },
       {
-        id: "transport-layer",
-        name: "Transport Layer",
+        id: "tcp-sockets",
+        name: "TCP & Socket API",
         topics: [
           {
             id: "tcp",
-            name: "TCP: 3-Way Handshake, Flow Control",
+            name: "TCP: Header, Handshake & Flow Control",
             subtopics: [
-              "TCP Header",
-              "Three-Way Handshake ⭐⭐"
+              "TCP header fields ⭐",
+              "Three-way handshake (seq/ack numbers) ⭐⭐⭐",
+              "Flow control (sliding window) ⭐⭐"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - TCP", url: "https://www.youtube.com/watch?v=SLY4Ud53UMs", icon: "📺" },
               { type: "practice", name: "GATE Overflow - TCP", url: "https://gateoverflow.in/tag/tcp", icon: "📝" }
             ],
-            importance: 2,
+            importance: 3,
             estimatedHours: 10
           },
           {
             id: "congestion",
             name: "TCP Congestion Control",
             subtopics: [
-              "Slow Start, Congestion Avoidance ⭐⭐⭐",
+              "Slow start & congestion avoidance ⭐⭐⭐",
+              "cwnd vs time graphs ⭐⭐⭐",
               "TCP Reno vs Tahoe"
             ],
             resources: [
@@ -1829,26 +1921,43 @@ export const subjects: Subject[] = [
             ],
             importance: 3,
             estimatedHours: 12
+          },
+          {
+            id: "socket-api",
+            name: "Socket API (NEW in 2027)",
+            subtopics: [
+              "Explicitly named in GATE 2027 syllabus ⭐⭐",
+              "socket(), bind(), listen(), accept(), connect(), send(), recv(), close()",
+              "Client-server over TCP sockets"
+            ],
+            resources: [
+              { type: "video", name: "Socket Programming Basics", url: "https://www.youtube.com/results?search_query=socket+programming+tcp+client+server+tutorial", icon: "📺" },
+              { type: "practice", name: "GATE Overflow - Sockets", url: "https://gateoverflow.in/tag/sockets", icon: "📝" },
+              { type: "notes", name: "Beej's Guide to Network Programming", url: "https://beej.us/guide/bgnet/", icon: "📚" }
+            ],
+            importance: 3,
+            estimatedHours: 8
           }
         ]
       },
       {
         id: "application-layer",
-        name: "Application Layer",
+        name: "Application Layer (2027: DNS & HTTP only)",
         topics: [
           {
             id: "app-protocols",
-            name: "DNS & HTTP",
+            name: "DNS & HTTP (only these two in 2027)",
             subtopics: [
-              "DNS Resolution ⭐",
-              "HTTP Persistent/Non-persistent ⭐⭐"
+              "DNS: iterative vs recursive resolution ⭐⭐",
+              "HTTP: persistent vs non-persistent RTT counting ⭐⭐⭐",
+              "⚠️ SMTP, FTP & Email removed in GATE 2027"
             ],
             resources: [
               { type: "video", name: "Gate Smashers - DNS", url: "https://www.youtube.com/watch?v=Rck3BALhI5c", icon: "📺" },
               { type: "video", name: "Gate Smashers - HTTP", url: "https://www.youtube.com/watch?v=0OrmKCB0UrQ", icon: "📺" },
               { type: "practice", name: "GATE Overflow - Application Layer", url: "https://gateoverflow.in/tag/application-layer", icon: "📝" }
             ],
-            importance: 2,
+            importance: 3,
             estimatedHours: 8
           }
         ]
@@ -2753,14 +2862,128 @@ export const quizzes: Quiz[] = [
     correctAnswer: 1,
     explanation: "Bernoulli(p): E[X]=p, Var(X)=p(1-p)",
     difficulty: "medium"
+  },
+  // GATE 2027 revised topics — Control Unit
+  {
+    id: "q76",
+    topicId: "hardwired-control",
+    question: "Compared to a microprogrammed control unit, a hardwired control unit is:",
+    options: [
+      "Slower but more flexible",
+      "Faster but difficult to modify",
+      "Slower and difficult to modify",
+      "Faster and easier to modify"
+    ],
+    correctAnswer: 1,
+    explanation: "Hardwired control uses fixed logic circuits — very fast, but any design change requires rewiring. Microprogrammed control is slower (control memory reads) but easy to modify.",
+    difficulty: "medium"
+  },
+  {
+    id: "q77",
+    topicId: "microprogrammed-control",
+    question: "In a microprogrammed control unit, control words are stored in:",
+    options: ["Main memory", "Cache memory", "Control memory (control store)", "Register file"],
+    correctAnswer: 2,
+    explanation: "Microinstructions (control words) are stored in a special fast memory called control memory or control store inside the CPU.",
+    difficulty: "easy"
+  },
+  // GATE 2027 revised topics — Socket API
+  {
+    id: "q78",
+    topicId: "socket-api",
+    question: "Which socket API call converts an unconnected socket into a passive (server) socket ready to accept connections?",
+    options: ["bind()", "accept()", "listen()", "connect()"],
+    correctAnswer: 2,
+    explanation: "listen() marks the socket as passive, willing to accept incoming connections. bind() only assigns a local address; accept() dequeues a pending connection.",
+    difficulty: "medium"
+  },
+  {
+    id: "q79",
+    topicId: "socket-api",
+    question: "On the client side, the correct order of socket API calls for TCP is:",
+    options: [
+      "socket() → connect() → send()/recv() → close()",
+      "socket() → bind() → listen() → accept()",
+      "connect() → socket() → bind() → send()",
+      "socket() → listen() → connect() → send()"
+    ],
+    correctAnswer: 0,
+    explanation: "Client: create socket, connect to server, exchange data, close. bind→listen→accept is the server-side sequence.",
+    difficulty: "easy"
+  },
+  // GATE 2027 revised topics — CIDR / NAT
+  {
+    id: "q80",
+    topicId: "ip-addressing",
+    question: "Aggregating four contiguous /24 networks (200.1.0.0/24 to 200.1.3.0/24) into one CIDR block gives:",
+    options: ["200.1.0.0/22", "200.1.0.0/21", "200.1.0.0/23", "200.1.0.0/20"],
+    correctAnswer: 0,
+    explanation: "Four /24s (2² = 4 blocks) merge into a /22 supernet covering 1024 addresses: 200.1.0.0/22.",
+    difficulty: "medium"
+  },
+  {
+    id: "q81",
+    topicId: "fragmentation",
+    question: "An IP datagram of 4000 bytes (20-byte header) crosses a link with MTU 1500. Into how many fragments is it split?",
+    options: ["2", "3", "4", "5"],
+    correctAnswer: 1,
+    explanation: "Payload = 3980 bytes. Each fragment carries ≤1480 bytes (multiple of 8). 1480+1480+1020 = 3980 → 3 fragments.",
+    difficulty: "hard"
+  },
+  // GATE 2027 revised topics — Minimization
+  {
+    id: "q82",
+    topicId: "minimization-techniques",
+    question: "The tabular method of Boolean function minimization is also known as:",
+    options: ["De Morgan's method", "Quine-McCluskey method", "Shannon expansion", "Karnaugh mapping"],
+    correctAnswer: 1,
+    explanation: "The Quine-McCluskey (tabular) method systematically finds prime implicants — now explicitly named in the GATE 2027 syllabus.",
+    difficulty: "easy"
+  },
+  {
+    id: "q83",
+    topicId: "minimization-techniques",
+    question: "How many cells does a 5-variable Karnaugh map contain?",
+    options: ["16", "25", "32", "64"],
+    correctAnswer: 2,
+    explanation: "An n-variable K-map has 2ⁿ cells. For n=5, that's 2⁵ = 32 cells.",
+    difficulty: "easy"
+  },
+  {
+    id: "q84",
+    topicId: "number-conversions",
+    question: "The range of integers representable in 8-bit 2's complement is:",
+    options: ["−127 to 127", "−128 to 127", "−128 to 128", "0 to 255"],
+    correctAnswer: 1,
+    explanation: "n-bit 2's complement covers −2ⁿ⁻¹ to 2ⁿ⁻¹ − 1. For 8 bits: −128 to +127.",
+    difficulty: "medium"
+  },
+  {
+    id: "q85",
+    topicId: "ethernet",
+    question: "The minimum Ethernet frame size (for CSMA/CD to work correctly) is:",
+    options: ["32 bytes", "46 bytes", "64 bytes", "128 bytes"],
+    correctAnswer: 2,
+    explanation: "Minimum Ethernet frame = 64 bytes so that a collision is detected before transmission completes (bounded by round-trip propagation).",
+    difficulty: "medium"
+  },
+  {
+    id: "q86",
+    topicId: "memory-interfacing",
+    question: "AMAT (Average Memory Access Time) with hit time H, miss rate m and miss penalty P is:",
+    options: ["H + m × P", "H × m + P", "H × (1 − m) + P × m", "P − H × m"],
+    correctAnswer: 0,
+    explanation: "AMAT = Hit Time + Miss Rate × Miss Penalty — the standard memory-hierarchy performance formula.",
+    difficulty: "easy"
   }
 ];
 
 export const youtubeChannels = [
+  { name: "GATE 2027 — IIT Madras (Official)", specialty: "Official announcements & guidance", url: "https://www.youtube.com/channel/UC1Ti74ZAFexTSfnr05RorLQ", importance: 3 },
   { name: "Gate Smashers", specialty: "ALL CS Subjects", url: "https://www.youtube.com/@GateSmashers", importance: 3 },
-  { name: "Ravindrababu Ravula", specialty: "TOC, Compiler, OS, DBMS", url: "https://www.youtube.com/@raaborararavulasuds", importance: 3 },
+  { name: "Ravindrababu Ravula", specialty: "TOC, Compiler, OS, DBMS", url: "https://www.youtube.com/@ravindrababuravula", importance: 3 },
   { name: "Abdul Bari", specialty: "DSA, Algorithms", url: "https://www.youtube.com/@abdul_bari", importance: 3 },
-  { name: "Neso Academy", specialty: "Networks, Digital Logic, TOC", url: "https://www.youtube.com/@nesaboratory", importance: 2 },
+  { name: "Neso Academy", specialty: "Networks, Digital Logic, TOC", url: "https://www.youtube.com/@nesoacademy", importance: 2 },
   { name: "Knowledge Gate", specialty: "OS, DBMS, Compiler", url: "https://www.youtube.com/@KnowledgeGate", importance: 2 },
   { name: "3Blue1Brown", specialty: "Linear Algebra, Probability (Intuition)", url: "https://www.youtube.com/@3blue1brown", importance: 2 },
   { name: "Aditya Verma", specialty: "Dynamic Programming", url: "https://www.youtube.com/@TheAdityaVerma", importance: 2 },
@@ -2955,4 +3178,161 @@ export const motivationalQuotes: string[] = [
   "The future depends on what you do today.",
   "Dream big. Work hard. Stay focused. Crush GATE!",
   "Every problem you solve makes you stronger.",
+];
+
+// =====================================================
+// DAILY QUESTS — rotating tasks to build a daily habit
+// =====================================================
+export interface DailyQuestTemplate {
+  id: string;
+  title: string;
+  description: string;
+  xp: number;
+  icon: string;
+  type: 'topic' | 'quiz' | 'focus' | 'community' | 'pyq' | 'challenge' | 'bookmark';
+  actionView?: string;
+}
+
+export const dailyQuestPool: DailyQuestTemplate[] = [
+  { id: 'q_topic', title: 'Topic Slayer', description: 'Complete 1 topic today', xp: 60, icon: '📖', type: 'topic', actionView: 'subjects' },
+  { id: 'q_quiz', title: 'Sharpen Up', description: 'Score 60%+ on any quiz', xp: 50, icon: '🎯', type: 'quiz', actionView: 'quiz' },
+  { id: 'q_focus', title: 'Deep Work', description: 'Finish one 25-minute focus session', xp: 50, icon: '🧘', type: 'focus', actionView: 'home' },
+  { id: 'q_challenge', title: 'Daily Challenge', description: 'Attempt today\'s daily challenge', xp: 40, icon: '⚔️', type: 'challenge', actionView: 'home' },
+  { id: 'q_pyq', title: 'PYQ Explorer', description: 'Open 1 previous-year paper', xp: 40, icon: '📜', type: 'pyq', actionView: 'resources' },
+  { id: 'q_community', title: 'Be Heard', description: 'Post or reply in the Community', xp: 40, icon: '💬', type: 'community', actionView: 'community' },
+  { id: 'q_bookmark', title: 'Revision Queue', description: 'Bookmark 2 topics to revise', xp: 30, icon: '🔖', type: 'bookmark', actionView: 'subjects' },
+  { id: 'q_topic2', title: 'Double Down', description: 'Complete 2 topics today', xp: 90, icon: '📚', type: 'topic', actionView: 'subjects' },
+];
+
+// =====================================================
+// COMMUNITY — categories + starter threads
+// (local, on-device board + links to real communities)
+// =====================================================
+export const communityCategories = [
+  { id: 'general', label: 'General', icon: '💬' },
+  { id: 'doubt', label: 'Doubts', icon: '❓' },
+  { id: 'strategy', label: 'Strategy', icon: '🧭' },
+  { id: 'official', label: 'Official Updates', icon: '📢' },
+  { id: 'resources', label: 'Resources', icon: '📚' },
+  { id: 'motivation', label: 'Motivation', icon: '🔥' },
+];
+
+export interface SeedReply {
+  author: string;
+  avatar: string;
+  text: string;
+  upvotes: number;
+  offsetHours: number;
+}
+
+export interface SeedPost {
+  title: string;
+  body: string;
+  category: string;
+  author: string;
+  avatar: string;
+  upvotes: number;
+  offsetDays: number; // created N days ago (hydrated at runtime)
+  replies: SeedReply[];
+}
+
+export const seedPosts: SeedPost[] = [
+  {
+    title: '📢 GATE 2027 syllabus revised — what actually changed for CS?',
+    body: 'IIT Madras has revised the CS syllabus for GATE 2027. Summary: Digital Logic now explicitly lists algebraic, K-Map and tabular (Quine-McCluskey) minimization. COA adds Hardwired + Microprogrammed control unit design and cache memory mapping. Computer Networks is reduced — UDP, ARP, DHCP, ICMP, SMTP, FTP, Email are out; application layer is DNS + HTTP only, and socket API is explicitly in. Everything else (Math, DS, Algo, TOC, CD, OS, DBMS, GA) is unchanged. Verify on gate2027.iitm.ac.in → Test Papers & Syllabus.',
+    category: 'official',
+    author: 'GATE Mastery Bot',
+    avatar: '🤖',
+    upvotes: 214,
+    offsetDays: 4,
+    replies: [
+      { author: 'Aarav_S', avatar: '🦉', text: 'Thanks! So I can skip UDP and SMTP numericals this year? Huge time save.', upvotes: 41, offsetHours: 60 },
+      { author: 'Meera_K', avatar: '🐯', text: 'Be careful — "not explicitly mentioned" ≠ guaranteed absent. But deprioritizing them makes sense. Focus TCP, IPv4, DNS, HTTP.', upvotes: 87, offsetHours: 40 },
+    ],
+  },
+  {
+    title: '⏰ Registration opens 27 Aug 2026 — documents checklist + DigiLocker is MANDATORY',
+    body: 'GATE 2027 registration (GOAPS) opens 27 Aug 2026 and regular registration closes 27 Sep 2026 (extended till 5 Oct 2026 with late fee). For Indian nationals, DigiLocker verification is mandatory this year — set it up NOW. Keep ready: photo, signature, category certificate (if applicable), degree/provisional certificate or final-year proof.',
+    category: 'official',
+    author: 'GATE Mastery Bot',
+    avatar: '🤖',
+    upvotes: 156,
+    offsetDays: 2,
+    replies: [
+      { author: 'Rohan_27', avatar: '🐺', text: 'Made my DigiLocker account today, took 5 minutes. Do it early folks.', upvotes: 33, offsetHours: 20 },
+    ],
+  },
+  {
+    title: 'How do you people solve 3 months of backlog without panicking?',
+    body: 'I started late and I\'m 3 months behind my plan. DS+Algo is done but OS/DBMS/TOC untouched and CN is a mystery. Should I follow the roadmap order here or reorder by weightage? Genuinely stressed.',
+    category: 'strategy',
+    author: 'late_but_serious',
+    avatar: '🐢',
+    upvotes: 98,
+    offsetDays: 6,
+    replies: [
+      { author: 'Meera_K', avatar: '🐯', text: 'Reorder by weightage: OS → DBMS → TOC → CN → COA/CD. Do topic + PYQs the same day. Skip nothing, but compress low-yield topics to video-only coverage.', upvotes: 64, offsetHours: 100 },
+      { author: 'pixel_perfect', avatar: '🦊', text: 'Use the Focus Timer here — 4×25 min sessions daily + mark topics done. Watching the streak grow is weirdly motivating.', upvotes: 29, offsetHours: 70 },
+      { author: 'Aarav_S', avatar: '🦉', text: '3 months behind in August means you still finish the syllabus by December. That\'s exactly on schedule for Jan mocks. You\'re fine.', upvotes: 52, offsetHours: 48 },
+    ],
+  },
+  {
+    title: 'Best order for DBMS normalization + transactions? (doubt)',
+    body: 'Should I finish FDs and candidate keys before touching serializability? I keep confusing conflict vs view serializability and my precedence graphs are somehow always cyclic when they shouldn\'t be 😅',
+    category: 'doubt',
+    author: 'sql_slayer',
+    avatar: '🐳',
+    upvotes: 45,
+    offsetDays: 3,
+    replies: [
+      { author: 'dbms_guru', avatar: '🦅', text: 'Yes: FDs → keys → normal forms → decomposition → THEN transactions → serializability → 2PL. For precedence graphs, list operations per transaction in order, then draw edges only for conflict pairs (R-W, W-R, W-W on the same data item). Acyclic = conflict serializable.', upvotes: 38, offsetHours: 30 },
+    ],
+  },
+  {
+    title: 'Hardwired vs Microprogrammed control unit — summary notes (NEW 2027 topic)',
+    body: 'Since this is explicitly in the 2027 syllabus now, here\'s my one-pager: Hardwired = fixed logic, RISC CPUs, extremely fast, zero flexibility, design uses state counters/decoders. Microprogrammed = control store holds microinstructions, CISC-friendly, slower (extra memory read per micro-op), easy to patch, horizontal (wide, parallel, fast) vs vertical (encoded, compact, slow) microinstructions. GATE loves the speed comparison question.',
+    category: 'resources',
+    author: 'circuits_and_chai',
+    avatar: '🦡',
+    upvotes: 132,
+    offsetDays: 5,
+    replies: [
+      { author: 'GATE Mastery Bot', avatar: '🤖', text: 'Pinned-worthy! Check the new control-unit topics under COA in the Subjects tab — PyQs linked there too.', upvotes: 44, offsetHours: 80 },
+    ],
+  },
+  {
+    title: '🔥 Day 41 streak. Some honest advice for anyone at Day 1.',
+    body: 'I was the "I\'ll start from Monday" person for a year. What finally worked: (1) daily challenge here every morning with chai — non-negotiable 5 questions, (2) one focus timer session before any social media, (3) mark topics done ONLY when I could explain them out loud. 41 days later I\'ve finished DSA + half of Algo. Start embarrassingly small. Streaks > marathons.',
+    category: 'motivation',
+    author: 'streak_machine',
+    avatar: '🐆',
+    upvotes: 287,
+    offsetDays: 1,
+    replies: [
+      { author: 'day_one_again', avatar: '🐣', text: 'This is the sign I needed. Day 1 starts now.', upvotes: 61, offsetHours: 18 },
+      { author: 'Meera_K', avatar: '🐯', text: '"Mark done only when you can explain it out loud" — this. Passive video watching is not progress.', upvotes: 40, offsetHours: 10 },
+    ],
+  },
+  {
+    title: 'Socket API in GATE 2027 — how deep do we go?',
+    body: 'The 2027 syllabus explicitly says "socket API". Do we need actual C code with socket(), bind(), listen(), accept() or just conceptual call ordering? Anyone found official clarity?',
+    category: 'doubt',
+    author: 'tcp_tim',
+    avatar: '🦜',
+    upvotes: 73,
+    offsetDays: 7,
+    replies: [
+      { author: 'net_ninja', avatar: '🦈', text: 'Conceptual + call ordering is the safe bet (GATE is not a coding exam). Know: server = socket→bind→listen→accept, client = socket→connect. Beej\'s guide sections 1-5 is more than enough.', upvotes: 55, offsetHours: 120 },
+    ],
+  },
+  {
+    title: 'My GATE Overflow routine that took me from rank ~4000 to ~200 in mocks',
+    body: 'Every topic: 1 video → hand notes → ALL GATE Overflow PYQs of that tag (not just recent 5 years — the 90s questions are gold for fundamentals) → bookmark wrong ones → re-attempt bookmarks on Sunday. It\'s slow for 2 weeks, then something clicks and mocks jump 15 marks.',
+    category: 'strategy',
+    author: 'gateoverflow_veteran',
+    avatar: '🐘',
+    upvotes: 173,
+    offsetDays: 9,
+    replies: [],
+  },
 ];

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gate2027mastery.com/sitemap.xml

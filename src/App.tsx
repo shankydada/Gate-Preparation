@@ -10,11 +10,12 @@ import RoadmapView from './components/Roadmap/RoadmapView';
 import SubjectsView from './components/Subjects/SubjectsView';
 import QuizView from './components/Quiz/QuizView';
 import ResourcesView from './components/Resources/ResourcesView';
+import CommunityView from './components/Community/CommunityView';
 import ProgressView from './components/Progress/ProgressView';
 import WelcomeModal from './components/Welcome/WelcomeModal';
 import XPToast from './components/Common/XPToast';
 
-type ViewType = 'home' | 'roadmap' | 'subjects' | 'quiz' | 'resources' | 'progress';
+type ViewType = 'home' | 'roadmap' | 'subjects' | 'quiz' | 'resources' | 'community' | 'progress';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('home');
@@ -56,6 +57,8 @@ function App() {
         return <QuizView />;
       case 'resources':
         return <ResourcesView />;
+      case 'community':
+        return <CommunityView />;
       case 'progress':
         return <ProgressView />;
       default:
@@ -115,21 +118,30 @@ function App() {
                 </div>
               </div>
               <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-4 max-w-md`}>
-                Your comprehensive guide to conquering GATE CSE 2027. 
-                500+ video resources, 10,000+ practice questions, and a gamified learning experience.
+                Your comprehensive guide to conquering GATE CSE 2027 (IIT Madras, 6–21 Feb 2027).
+                Officially-updated syllabus, 500+ video resources, 10,000+ practice questions,
+                and a gamified daily learning experience.
               </p>
-              <div className="flex gap-4">
-                <a 
-                  href="https://gateoverflow.in" 
-                  target="_blank" 
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://gate2027.iitm.ac.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-sm font-semibold ${darkMode ? 'text-emerald-400 hover:text-emerald-300' : 'text-emerald-600 hover:text-emerald-700'}`}
+                >
+                  gate2027.iitm.ac.in (Official)
+                </a>
+                <a
+                  href="https://gateoverflow.in"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className={`text-sm ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
                 >
                   GATE Overflow
                 </a>
-                <a 
-                  href="https://www.geeksforgeeks.org" 
-                  target="_blank" 
+                <a
+                  href="https://www.geeksforgeeks.org"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className={`text-sm ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}
                 >
@@ -149,6 +161,7 @@ function App() {
                   { label: 'Subjects', view: 'subjects' },
                   { label: 'Quiz', view: 'quiz' },
                   { label: 'Resources', view: 'resources' },
+                  { label: 'Community', view: 'community' },
                 ].map(link => (
                   <li key={link.view}>
                     <button
