@@ -1,5 +1,7 @@
 // Complete GATE 2027 CSE Data Structure
 
+import { gfgLinksFor } from "./gfgMap";
+
 export interface Resource {
   type: 'video' | 'practice' | 'notes' | 'book' | 'tool';
   name: string;
@@ -1180,7 +1182,9 @@ export const subjects: Subject[] = [
             estimatedHours: 10
           },
           {
-            id: "normal-forms",
+            // NOTE: was "normal-forms" — renamed to fix a collision with the
+            // DBMS topic of the same id (quizzes/progress were cross-linked).
+            id: "cnf-gnf",
             name: "Normal Forms (CNF, GNF)",
             subtopics: [
               "Chomsky Normal Form ⭐⭐",
@@ -1642,7 +1646,9 @@ export const subjects: Subject[] = [
             estimatedHours: 12
           },
           {
-            id: "normal-forms",
+            // NOTE: was "normal-forms" — renamed to fix a collision with the
+            // Theory of Computation topic of the same id.
+            id: "dbms-normal-forms",
             name: "Normal Forms (1NF to BCNF)",
             subtopics: [
               "1NF, 2NF, 3NF, BCNF ⭐⭐⭐",
@@ -2066,6 +2072,28 @@ export const subjects: Subject[] = [
   }
 ];
 
+// ── GeeksforGeeks per-topic enrichment ────────────────────────────────────
+// Merges curated GFG links (src/data/gfgMap.ts) into every topic so each
+// topic carries at least one GFG notes link. Idempotent + deduped by URL.
+// Link health is verified by scripts/gfg-crawler.mjs in CI (npm run crawl:gfg).
+for (const subject of subjects) {
+  for (const section of subject.sections) {
+    for (const topic of section.topics) {
+      const seen = new Set(topic.resources.map(r => r.url));
+      for (const link of gfgLinksFor(topic.id)) {
+        if (seen.has(link.url)) continue;
+        topic.resources.push({
+          type: link.type,
+          name: link.name,
+          url: link.url,
+          icon: link.type === 'notes' ? '📚' : '📝',
+        });
+        seen.add(link.url);
+      }
+    }
+  }
+}
+
 // Sample Quiz Questions
 export const quizzes: Quiz[] = [
   // Propositional Logic
@@ -2347,7 +2375,7 @@ export const quizzes: Quiz[] = [
   // Normalization
   {
     id: "q27",
-    topicId: "normal-forms",
+    topicId: "dbms-normal-forms",
     question: "If a relation is in BCNF, it is definitely in:",
     options: ["2NF only", "3NF only", "Both 2NF and 3NF", "4NF"],
     correctAnswer: 2,
@@ -2671,7 +2699,7 @@ export const quizzes: Quiz[] = [
   },
   {
     id: "q59",
-    topicId: "normal-forms",
+    topicId: "dbms-normal-forms",
     question: "A relation is in 2NF if it is in 1NF and has no:",
     options: [
       "Transitive dependency",
@@ -2721,7 +2749,7 @@ export const quizzes: Quiz[] = [
   // Additional CFG
   {
     id: "q63",
-    topicId: "normal-forms",
+    topicId: "cnf-gnf",
     question: "In Chomsky Normal Form, productions are of the form:",
     options: [
       "A → aα only",

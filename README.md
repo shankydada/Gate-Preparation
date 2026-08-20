@@ -559,6 +559,50 @@ For this project, I recommend **Vercel** or **Cloudflare Pages** because:
 
 ---
 
+## ⚙️ CI/CD & Render Auto-Deploy
+
+Every push to `main` is **built, verified and auto-deployed to Render** via GitHub Actions (`.github/workflows/`):
+
+| Workflow | Trigger | What it does |
+|---|---|---|
+| `ci.yml` | PRs to `main`, pushes to other branches | `npm ci` → typecheck → build → GFG link crawl report |
+| `deploy.yml` | Push to `main` (or manual run) | Same verification, then fires the **Render Deploy Hook** so the Web Service rebuilds immediately |
+
+### One-time setup (≈2 minutes)
+
+1. **Render Dashboard** → your Web Service (`gate-preparation-zfkv.onrender.com`) → **Settings → Deploy Hook** → create/copy the hook URL.
+2. **GitHub repo** → *Settings → Secrets and variables → Actions* → **New repository secret**:
+   - Name: `RENDER_DEPLOY_HOOK_URL`
+   - Value: the hook URL from step 1
+
+From now on: merge/commit to `main` → GitHub Actions verifies the build → Render redeploys automatically. If the secret is missing, the workflow prints a warning instead of failing (Render's own Auto-Deploy still covers the push if enabled).
+
+### Render Web Service settings (reference)
+
+| Setting | Value |
+|---|---|
+| Environment | Node |
+| Build Command | `npm ci && npm run build` |
+| Start Command | `npm run preview` (binds `0.0.0.0` and Render's `$PORT`) |
+| Health Check Path | `/` |
+
+## 🕷️ GeeksforGeeks Link Crawler
+
+Every GATE topic carries curated **GeeksforGeeks notes links** (`src/data/gfgMap.ts`, merged into topics by `gateData.ts`; source: [GFG GATE CS Notes](https://www.geeksforgeeks.org/gate-cs-notes-gq/)). The crawler keeps them healthy:
+
+```bash
+npm run crawl:gfg          # validate all GFG links, print a report
+npm run crawl:gfg:strict   # same, but exit 1 if any link is dead (404/410)
+```
+
+Behaviour & fixes baked in:
+- **Anti-bot aware** — 403/406/429 are classified `blocked`, *not* dead (GFG throttles datacenter IPs); only real 404/410 fail strict mode.
+- **Retries with exponential backoff** + `Retry-After` support, per-request **timeouts**, and **bounded concurrency** (default 6) so it never hammers GFG or crashes with unhandled rejections.
+- **JSON report** (`--json path`) uploaded as a CI artifact on every run.
+- Useful flags: `--max N` (smoke test), `--concurrency N`, `--timeout ms`, `--base-url URL` (offline fixtures).
+
+CI runs the crawler on every PR — if a GFG article moves or disappears, the report tells you exactly which entry of `gfgMap.ts` to update.
+
 ## 🤝 Contributing
 
 Contributions are what make the open-source community amazing! Any contributions you make are **greatly appreciated**.
